@@ -63,7 +63,7 @@ variable "vpc_flow_logs_bucket_tags" {
 variable "vpn_connection_static_routes_only" {
   type        = bool
   default     = false
-  description = "(Optional, Default false) Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP. If this is set to true, vpn_connection_static_routes_destinations must also be set."
+  description = "(optional, Default false) Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP. If this is set to true, vpn_connection_static_routes_destinations must also be set."
 }
 
 variable "vpn_connection_static_routes_destinations" {
