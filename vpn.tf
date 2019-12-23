@@ -2,7 +2,7 @@
 resource "aws_vpn_gateway" "default" {
   vpc_id = aws_vpc.main.id
   tags = {
-    "Name" = "${local.name}-vpn-gw"
+    "Name" = "VGW-${var.name}-${local.env_id}-${local.region_id}"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_vpn_connection" "default" {
   static_routes_only  = var.vpn_connection_static_routes_only
 
   tags = {
-    "Name" = "VPN-${local.name}-${local.env_id}-${local.region_id}-CSR-${substr(lookup(var.gateways[count.index], "name"), length(lookup(var.gateways[count.index], "name")) - 2, 2)}"
+    "Name" = "VPN-${var.name}-${local.env_id}-${local.region_id}-CSR-${substr(lookup(var.gateways[count.index], "name"), length(lookup(var.gateways[count.index], "name")) - 2, 2)}"
   }
 }
 

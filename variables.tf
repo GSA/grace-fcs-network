@@ -68,6 +68,7 @@ variable "vpn_connection_static_routes_only" {
 
 variable "vpn_connection_static_routes_destinations" {
   type        = list(string)
+  default     = []
   description = "(required if vpn_connection_static_routes_only=true) A list of the CIDR block associated with the local subnet of the customer network. (eg: [\"10.100.0.0/32\"])"
 }
 

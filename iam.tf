@@ -10,7 +10,7 @@ resource "aws_iam_access_key" "user" {
 
 data "aws_iam_policy_document" "user" {
   statement {
-    sid       = "Allow access to EC2:* for finalization of network connection"
+    sid       = "netopsCreateVPN"
     effect    = "Allow"
     actions   = ["ec2:*"]
     resources = ["*"]

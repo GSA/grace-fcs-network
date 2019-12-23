@@ -6,14 +6,14 @@ resource "aws_vpc" "main" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "VPC-${local.name}-${local.env_id}-${local.region_id}"
+    Name = "VPC-${var.name}-${local.env_id}-${local.region_id}"
   }
 }
 
 
 # Creating VPC flow logs
 resource "aws_flow_log" "default" {
-  log_destination      = local.bucket_name
+  log_destination      = data.aws_s3_bucket.selected.arn
   log_destination_type = "s3"
   traffic_type         = "ALL"
   vpc_id               = aws_vpc.main.id
@@ -84,7 +84,7 @@ resource "aws_route_table" "default" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "RT-${local.name}"
+    Name = "RT-${var.name}"
   }
 }
 
