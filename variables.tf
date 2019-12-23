@@ -63,11 +63,12 @@ variable "vpc_flow_logs_bucket_tags" {
 variable "vpn_connection_static_routes_only" {
   type        = bool
   default     = false
-  description = "(Optional, Default false) Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP. If this is set to true, vpn_connection_static_routes_destinations must also be set."
+  description = "(optional, Default false) Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP. If this is set to true, vpn_connection_static_routes_destinations must also be set."
 }
 
 variable "vpn_connection_static_routes_destinations" {
   type        = list(string)
+  default     = []
   description = "(required if vpn_connection_static_routes_only=true) A list of the CIDR block associated with the local subnet of the customer network. (eg: [\"10.100.0.0/32\"])"
 }
 

@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "kms_key" {
   statement {
-    sid    = "Enable IAM User Permissions"
+    sid    = "IAMUserPermissions"
     effect = "Allow"
     principals {
       identifiers = [
@@ -16,7 +16,7 @@ data "aws_iam_policy_document" "kms_key" {
     ]
   }
   statement {
-    sid    = "Allow VPC flow log decryption"
+    sid    = "vpcFlowLogDecryption"
     effect = "Allow"
     principals {
       identifiers = local.log_viewer_roles
