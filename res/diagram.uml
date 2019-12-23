@@ -1,0 +1,67 @@
+@startuml
+skinparam {
+    ArrowColor Black
+    NoteBorderColor Black
+    LineType ortho
+}
+
+skinparam rectangle {
+    roundCorner 25
+    roundCorner 45
+    backgroundColor White
+}
+
+ header GRACE FCS Network Connection Overview
+
+rectangle "Verizon PIP" as PIP {
+}
+
+rectangle "\nOn-Prem Network\n" as OP {
+}
+
+cloud "Internet" as I {
+    rectangle "IPSec VPN 2" as VPN2 {
+    }
+    rectangle "IPSec VPN 1" as VPN1 {
+    }
+}
+
+rectangle "   Tenant VPC   " as TV #WhiteSmoke {
+    rectangle "VGW" #PeachPuff {
+        rectangle Tu2 {
+        }
+        rectangle Tu1 {
+        }
+    }
+}
+
+rectangle "FCS Network VPC" as FCS #WhiteSmoke {
+
+    rectangle "<b>Cisco CSRs" as CS #MintCream {
+        rectangle CSR2 {
+        }
+        rectangle CSR1 {
+        }
+    }
+
+    rectangle "<b>SecOps Firewalls" as SC #White {
+        rectangle PA2 {
+        }
+        rectangle PA1 {
+        }
+    }
+}
+
+
+Tu1 .d. VPN1
+Tu2 .d. VPN2
+VPN1 .d. CSR1
+VPN2 .d. CSR2
+CSR1 .d. PA1
+CSR2 .d. PA2
+
+PA1 -[thickness=4]d- PIP
+PA2 -[thickness=4]d- PIP
+PIP -[thickness=4]d- OP
+
+@enduml

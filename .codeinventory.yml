@@ -1,0 +1,12 @@
+name: 'GSA/grace-fcs-network'
+description: 'Bootstrapping code to assist GRACE customers implment the FCS network solution'
+license: cc0-1.0
+openSourceProject: 1
+governmentWideReuseProject: 1
+tags:
+    - open-source
+    - opensource
+    - grace
+    - devsecops
+contact:
+    email: grace-staff@gsa.gov

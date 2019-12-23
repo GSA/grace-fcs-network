@@ -1,0 +1,12 @@
+name           = "PROJECT_NAME"
+cidr           = "GRACE_SUBNET_CIDR"
+appenv         = "GRACE_APP_ENV"
+remote_bgp_asn = "FCS_BGP_ASN"
+gateways       = [{
+    name    = "GATEWAY_NAME_1"
+    address = "GATEWAY_ADDRESS_1"
+  },
+  {
+    name    = "GATEWAY_NAME_2"
+    address = "GATEWAY_ADDRESS_2"
+}]
