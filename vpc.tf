@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
 
 # Creating VPC flow logs
 resource "aws_flow_log" "default" {
-  log_destination      = data.aws_s3_bucket.selected.arn
+  log_destination      = module.vpc_flow_logs_bucket.this_s3_bucket_arn
   log_destination_type = "s3"
   traffic_type         = "ALL"
   vpc_id               = aws_vpc.main.id
@@ -71,7 +71,7 @@ EOF
 resource "aws_subnet" "private_subnets" {
   vpc_id                  = aws_vpc.main.id
   count                   = local.num_azs
-  cidr_block              = cidrsubnet(var.cidr, 5, count.index + 12)
+  cidr_block              = cidrsubnet(var.cidr, ceil(local.num_azs / 2), count.index)
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   map_public_ip_on_launch = true
 
