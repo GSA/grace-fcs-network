@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "user" {
   statement {
     sid       = "netopsCreateVPN"
     effect    = "Allow"
-    actions   = ["ec2:*"]
+    actions   = ["iam:ListAccountAliases", "ec2:*"]
     resources = ["*"]
   }
 }
